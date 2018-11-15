@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="3000" height="800" style="border: blueviolet;">
+    <script>
+      function Duongtron(x, y, radius) {
+          this.x = x;
+          this.y = y;
+          this.radius = radius;
+      }
+      function kichCo() {
+          return Math.floor(Math.random() * 255);
+      }
+      function mauSac() {
+          var red = kichCo();
+          var green = kichCo();
+          var black = kichCo();
+          return "rgb(" + red + "," + green + "," + black +")";
+      }
+      function taoDuongTron() {
+          var ctx = document.getElementById("myCanvas").getContext("2d");
+          var radius = Math.floor(Math.random() * 80);
+          var mausac = mauSac();
+          var x = Math.random() * window.innerWidth;
+          var y = Math.random() *window.innerHeight;
+          var duongtron = new Duongtron(x, y, radius);
+          ctx.beginPath();
+          ctx.arc(duongtron.x, duongtron.y, duongtron.radius, 0, 2 * Math.PI);
+          ctx.fillStyle = mausac;
+          ctx.fill();
+      }
+      function nhieuDuongTron(){
+          for (var i = 0; i < 40; i++) {
+              taoDuongTron();
+          }
+      }
+      nhieuDuongTron();
+    </script>
+</body>
+</html>
